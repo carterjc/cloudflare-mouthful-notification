@@ -1,0 +1,18 @@
+name = "mouthful-webhook"
+main = "src/worker.ts"
+compatibility_date = "2025-09-30"
+compatibility_flags = ["nodejs_compat"]
+
+routes = [
+  { pattern = "costic.dev/webhooks/mouthful", zone_name = "costic.dev" }
+]
+
+[vars]
+SENDER_EMAIL = "notifications@costic.dev"
+DESTINATION_EMAIL = "cartercostic@gmail.com"
+SITE_DOMAIN = "costic.dev"
+
+[[send_email]]
+name = "SEND_EMAIL"
+allowed_sender_addresses = ["notifications@costic.dev"]
+allowed_destination_addresses = ["cartercostic@gmail.com"]

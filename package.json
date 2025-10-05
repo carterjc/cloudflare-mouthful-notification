@@ -1,0 +1,27 @@
+{
+  "name": "cloudflare-minions",
+  "private": true,
+  "packageManager": "yarn@4.10.3",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "setup": "yarn install",
+    "dev": "yarn workspace @cloudflare-minions/mouthful-worker dev",
+    "build": "yarn workspaces foreach -Atv run build",
+    "typecheck": "yarn workspaces foreach -Atv run typecheck",
+    "deploy": "yarn workspace @cloudflare-minions/mouthful-worker deploy",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.37.0",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "eslint": "^9.37.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.4.0",
+    "typescript": "^5.6.3"
+  }
+}
