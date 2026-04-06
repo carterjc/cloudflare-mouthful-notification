@@ -21,7 +21,10 @@ export default [
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: ["./apps/mouthful-worker/tsconfig.json"],
+        project: [
+          "./apps/mouthful-worker/tsconfig.json",
+          "./apps/pa-appt-prices/tsconfig.json"
+        ],
         tsconfigRootDir: import.meta.dirname
       },
       sourceType: "module",

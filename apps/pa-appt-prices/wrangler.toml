@@ -1,0 +1,26 @@
+name = "apt-price-tracker"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[triggers]
+crons = ["0 14 * * *"]
+
+[vars]
+SENDER_EMAIL = "notifications@costic.dev"
+DESTINATION_EMAIL = "cartercostic@gmail.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "apt-prices"
+database_id = "9b836899-8b69-4f07-8639-69727c40ebbf"
+
+[[send_email]]
+name = "SEND_EMAIL"
+allowed_sender_addresses = ["notifications@costic.dev"]
+allowed_destination_addresses = ["cartercostic@gmail.com"]
+
+[observability]
+[observability.logs]
+enabled = true
+invocation_logs = true

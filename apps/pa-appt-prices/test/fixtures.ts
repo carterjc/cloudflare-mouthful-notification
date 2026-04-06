@@ -1,0 +1,35 @@
+export function makeTimelineRows(unitCount = 3, days = 5, moveInDates = 2) {
+  const rows = [];
+  for (let d = 0; d < days; d++) {
+    const scraped = `2026-04-${String(d + 1).padStart(2, "0")}`;
+    for (let u = 0; u < unitCount; u++) {
+      for (let m = 0; m < moveInDates; m++) {
+        const mid = `2026-05-${String(m * 15 + 1).padStart(2, "0")}`;
+        rows.push({
+          scraped_at: scraped,
+          unit_id: `UNIT-${u}`,
+          unit_name: `Unit ${u + 100}`,
+          floor_plan: "A1",
+          sqft: 600 + u * 50,
+          move_in_date: mid,
+          price: 3000 + u * 100 - d * 10 + m * 50,
+          net_effective: 2800 + u * 100 - d * 10 + m * 50,
+        });
+      }
+    }
+  }
+  return rows;
+}
+
+export function fakePng(): ArrayBuffer {
+  // Minimal valid PNG (1x1 transparent pixel)
+  const bytes = new Uint8Array([
+    0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0x00, 0x00, 0x00, 0x0d,
+    0x49, 0x48, 0x44, 0x52, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,
+    0x08, 0x06, 0x00, 0x00, 0x00, 0x1f, 0x15, 0xc4, 0x89, 0x00, 0x00, 0x00,
+    0x0a, 0x49, 0x44, 0x41, 0x54, 0x78, 0x9c, 0x62, 0x00, 0x00, 0x00, 0x02,
+    0x00, 0x01, 0xe5, 0x27, 0xde, 0xfc, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45,
+    0x4e, 0x44, 0xae, 0x42, 0x60, 0x82,
+  ]);
+  return bytes.buffer;
+}
