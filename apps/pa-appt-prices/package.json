@@ -12,6 +12,7 @@
     "lint:fix": "eslint src --ext .ts --fix"
   },
   "dependencies": {
+    "hono": "^4.12.11",
     "mimetext": "^3.0.14"
   },
   "devDependencies": {

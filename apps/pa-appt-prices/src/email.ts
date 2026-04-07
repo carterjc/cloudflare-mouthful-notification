@@ -20,11 +20,16 @@ export async function sendReport(
   const msg = createMimeMessage();
   msg.setSender({ name: "Apt Price Tracker", addr: sender });
   msg.setRecipient(recipient);
-  msg.setSubject(`Apt Price Report — ${new Date().toISOString().substring(0, 10)}`);
+  msg.setSubject(
+    `Apt Price Report — ${new Date().toISOString().substring(0, 10)}`,
+  );
 
   // HTML body with inline chart images
   const imgTags = charts
-    .map((c, i) => `<h3>${c.filename.replace(".png", "")}</h3><img src="cid:chart${i}" style="max-width:100%">`)
+    .map(
+      (c, i) =>
+        `<h3>${c.filename.replace(".png", "")}</h3><img src="cid:chart${i}" style="max-width:100%">`,
+    )
     .join("\n");
 
   msg.addMessage({
@@ -48,9 +53,5 @@ export async function sendReport(
 
 function arrayBufferToBase64(buf: ArrayBuffer): string {
   const bytes = new Uint8Array(buf);
-  let binary = "";
-  for (let i = 0; i < bytes.length; i++) {
-    binary += String.fromCharCode(bytes[i]);
-  }
-  return btoa(binary);
+  return btoa(bytes.reduce((acc, b) => (acc += String.fromCharCode(b)), ""));
 }

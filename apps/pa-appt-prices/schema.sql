@@ -1,5 +1,6 @@
 CREATE TABLE units (
   unit_id         TEXT PRIMARY KEY,
+  community_id    TEXT NOT NULL,
   unit_name       TEXT NOT NULL,
   sqft            INTEGER NOT NULL,
   floor_plan      TEXT,

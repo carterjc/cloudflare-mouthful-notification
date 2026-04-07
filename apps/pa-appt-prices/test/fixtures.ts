@@ -1,4 +1,9 @@
-export function makeTimelineRows(unitCount = 3, days = 5, moveInDates = 2) {
+export function makeTimelineRows(
+  unitCount = 3,
+  days = 5,
+  moveInDates = 2,
+  communityId = "test-community",
+) {
   const rows = [];
   for (let d = 0; d < days; d++) {
     const scraped = `2026-04-${String(d + 1).padStart(2, "0")}`;
@@ -9,6 +14,7 @@ export function makeTimelineRows(unitCount = 3, days = 5, moveInDates = 2) {
           scraped_at: scraped,
           unit_id: `UNIT-${u}`,
           unit_name: `Unit ${u + 100}`,
+          community_id: communityId,
           floor_plan: "A1",
           sqft: 600 + u * 50,
           move_in_date: mid,
@@ -22,7 +28,6 @@ export function makeTimelineRows(unitCount = 3, days = 5, moveInDates = 2) {
 }
 
 export function fakePng(): ArrayBuffer {
-  // Minimal valid PNG (1x1 transparent pixel)
   const bytes = new Uint8Array([
     0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0x00, 0x00, 0x00, 0x0d,
     0x49, 0x48, 0x44, 0x52, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,

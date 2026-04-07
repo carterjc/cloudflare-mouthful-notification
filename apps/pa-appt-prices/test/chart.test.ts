@@ -23,7 +23,7 @@ describe("renderTimelineChart", () => {
     expect(body.chart.type).toBe("line");
     expect(body.chart.data.labels).toHaveLength(5);
     expect(body.chart.data.datasets).toHaveLength(3);
-    expect(body.chart.options.title.text).toContain("All Units");
+    expect(body.chart.options.title.text).toContain("Over Time");
   });
 
   it("groups by move-in date for a single unit", async () => {

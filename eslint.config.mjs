@@ -14,7 +14,7 @@ export default [
   },
   js.configs.recommended,
   {
-    files: ["**/*.ts"],
+    files: ["**/*.ts", "**/*.tsx"],
     plugins: {
       "@typescript-eslint": tsPlugin
     },
